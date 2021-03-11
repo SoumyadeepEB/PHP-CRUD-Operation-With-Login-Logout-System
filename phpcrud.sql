@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 05, 2021 at 03:07 PM
+-- Generation Time: Mar 11, 2021 at 04:35 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -61,12 +61,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `sex`, `phone`, `email`, `image`) VALUES
-(2, 'Souvik Karmakar', 'male', 9402589412, 'skarmakar123@gmail.com', 'avatar.png'),
-(3, 'Sannati Singha', 'female', 9988775544, 'sannati_singha98@yahoo.com', 'image.jpg'),
-(6, 'Soumyadeep Ghosh', 'male', 7278570491, 'soumyadeepghosh22@gmail.com', 'SGhosh_passport.jpg'),
-(7, 'Emma Watson', 'female', 8777569824, 'emma@rediffmail.com', 'emma.jpg'),
-(8, 'Elon Musk', 'male', 9988775544, 'elon@gmail.com', 'elonmusk.jpg'),
-(9, 'John Doe', 'male', 9832457896, 'john@gmail.com', 'avatar.png');
+(14, 'Soumyadeep Ghosh', 'male', 7278570491, 'soumyadeep@gmail.com', 'SGhosh_passport.jpg'),
+(15, 'Souvik Karmakar', 'male', 9432385505, 'souvik.karmakar@gmail.com', 'avatar.png'),
+(18, 'Elon Musk', 'male', 9832457896, 'elon@gmail.com', 'elonmusk.jpg');
 
 --
 -- Indexes for dumped tables
@@ -98,7 +95,7 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
