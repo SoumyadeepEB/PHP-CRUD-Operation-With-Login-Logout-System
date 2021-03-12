@@ -13,6 +13,12 @@
         if(mysqli_num_rows($query) == 1){
             if($captcha_field == $_SESSION['captcha']){
                 unset($_SESSION['captcha']);
+
+                $log = getHostByName($_SERVER['HTTP_HOST']).' - '.date("F j, Y, g:i a").PHP_EOL.
+                "Login_".time().PHP_EOL.
+                "---------------------------------------".PHP_EOL;
+                file_put_contents('logs/log_'.date("j-n-Y").'.log', $log, FILE_APPEND);
+
                 if(isset($_POST['remember_me'])){
                     setcookie('username', $username, time()+24*60*60);
                     setcookie('password', $_POST['password'], time()+24*60*60);

@@ -31,6 +31,11 @@
         }
         $uquery = mysqli_query($link,$usql);
         if($uquery){
+            $log = getHostByName($_SERVER['HTTP_HOST']).' - '.date("F j, Y, g:i a").PHP_EOL.
+            "Record updated_".time().PHP_EOL.
+            "---------------------------------------".PHP_EOL;
+            file_put_contents('logs/log_'.date("j-n-Y").'.log', $log, FILE_APPEND);
+            
             $_SESSION['success'] = "One record updated successfully";
             header('location:index.php');
         }else{
