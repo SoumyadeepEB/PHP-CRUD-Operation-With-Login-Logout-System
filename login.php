@@ -1,5 +1,6 @@
 <?php 
     session_start();
+    date_default_timezone_set("Asia/Kolkata");
     include "config.php";
     if(isset($_SESSION['id']) && !empty($_SESSION['id'])){
         header('location:index.php');
@@ -32,7 +33,8 @@
                 $data = mysqli_fetch_assoc($query);
                 $_SESSION['id'] = $data['id'];
                 $_SESSION['name'] = $data['name'];
-                $_SESSION['time'] = time()+1800;
+                $_SESSION['timeout'] = time()+1800;
+                $_SESSION['login_at'] = date('h:m:s a');
                 sleep(1);
                 header('location:index.php');
             }else{

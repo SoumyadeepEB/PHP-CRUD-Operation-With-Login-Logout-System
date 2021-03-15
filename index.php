@@ -33,9 +33,10 @@
 <body>
     <nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
         <p class="navbar-brand">
-            <?php if(isset($_SESSION['id'])){ ?>
-                Welcome <?php echo $_SESSION['name'] ?>
-            <?php } ?>
+            <?php echo isset($_SESSION['id']) ? 'Welcome '.$_SESSION['name'] : '' ?>
+        </p>
+        <p class="nav-item text-white">
+            <?php echo isset($_SESSION['login_at']) ? 'Login at: '.$_SESSION['login_at'] : '' ?>&nbsp;&nbsp;
         </p>
         <p class="float-right">
             <a href="logout.php" class="btn btn-danger"><i class='fas fa-sign-out-alt'></i> Logout</a>
