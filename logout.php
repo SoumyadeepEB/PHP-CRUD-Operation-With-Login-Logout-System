@@ -1,5 +1,6 @@
 <?php 
     session_start();
+    date_default_timezone_set("Asia/Kolkata");
     session_destroy();
 
     $log = getHostByName($_SERVER['HTTP_HOST']).' - '.date("F j, Y, g:i a").PHP_EOL.
