@@ -1,6 +1,9 @@
 <?php 
     session_start();
     include "config.php";
+    if(isset($_SESSION['id']) && !empty($_SESSION['id'])){
+        header('location:index.php');
+    }
     
     if(isset($_POST['login'])){
         $username = $_POST['username'];
