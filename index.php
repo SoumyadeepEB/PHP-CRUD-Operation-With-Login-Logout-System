@@ -3,8 +3,8 @@
     include "authentication.php";
     include "config.php";
 
-    $limit = 3;
     $page = isset($_GET['page']) ? $_GET['page'] : 1;
+    $limit = 3;
     $offset = ($page-1)*$limit;
     $sql = "SELECT * FROM users LIMIT $limit OFFSET $offset";
     $query = mysqli_query($link,$sql);
