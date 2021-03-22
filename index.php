@@ -3,7 +3,10 @@
     include "authentication.php";
     include "config.php";
 
-    $sql = "SELECT * FROM users";
+    $limit = 3;
+    $page = isset($_GET['page']) ? $_GET['page'] : 1;
+    $offset = ($page-1)*$limit;
+    $sql = "SELECT * FROM users LIMIT $limit OFFSET $offset";
     $query = mysqli_query($link,$sql);
 ?>
 <!DOCTYPE html>
@@ -72,7 +75,12 @@
             <tbody class="text-center">
                 <?php if(mysqli_num_rows($query) == 0){ ?>
                     <tr><td colspan="7" class="text-center">No record found</td></tr>
-                <?php }else{ ?>
+                <?php }else{ 
+                    $psql = "SELECT * FROM users";
+                    $pquery = mysqli_query($link,$psql);
+                    $total_record = mysqli_num_rows($pquery);
+                    $total_page = ceil($total_record/$limit);
+                    ?>
                     <?php while($row = mysqli_fetch_assoc($query)){ ?>
                     <tr>
                         <td><?php echo $row['id'] ?></td>
@@ -96,6 +104,13 @@
                 <?php }} ?>
             </tbody>
         </table>
+        <ul class="pagination">
+            <li class="page-item <?php echo ($page > 1) ? '' : 'disabled' ?>"><a class="page-link" href="index.php?page=<?php echo $page-1 ?>">Previous</a></li>
+        <?php for($i=1;$i<=$total_page;$i++){ ?>
+            <li class="page-item <?php echo ($page == $i) ? 'active' : '' ?>"><a class="page-link" href="index.php?page=<?php echo $i ?>"><?php echo $i ?></a></li>
+        <?php } ?>
+            <li class="page-item <?php echo ($total_page > $page) ? '' : 'disabled' ?>"><a class="page-link" href="index.php?page=<?php echo $page+1 ?>">Next</a></li>
+        </ul>
     </div>
 </body>
 </html>
